@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import {connect} from "./db.js";
 import cors from "cors";
 import authRoutes from './routes/auth.js'
+import professionalRoutes from './routes/professionals.js'
+import bookingRoutes from './routes/bookings.js'
 
 dotenv.config();
 connect();
@@ -12,6 +14,9 @@ const app = express();
 app.use(cors())
 app.use(express.json())
 app.use('/api/auth', authRoutes)
+app.use('/api/professionals', professionalRoutes)
+app.use('/api/bookings', bookingRoutes)
+
 
 app.get('/', (req, res) => {
   res.json({ message: 'Mastro API funziona' })
